@@ -54,7 +54,7 @@ const loginPost = (req, res, next) => {
 			expiresIn: 86400 // expires in 24 hours
 			});
 			// res.status(200).send({ auth: true, accessToken: token });
-			res.redirect('/dashboard');
+			res.header('x-access-token', token).send({ auth: true, accessToken: token })
 		})
 		.catch(err => {
 			res.status(500).send('Error -> ' + err);
